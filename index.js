@@ -88,10 +88,13 @@
 		for (const price of prices) {
 			sb.Exile.priceBatch.add(price);
 		}
+		
+		const timestamp = new sb.Date();
 		await sb.Exile.priceBatch.insert({ ignore: true });
 		await sb.Query.batchUpdate(prices, (ru, row) => ru
 			.update("poe", "Price")
 			.set("Chaos_Equivalent", row.Chaos_Equivalent)
+			.set("Timestamp", timestamp)
 			.where("Item = %n", row.Item)
 			.where("League = %n", row.League)
 		);
