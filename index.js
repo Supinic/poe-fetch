@@ -2,7 +2,7 @@
 	process.env.MARIA_USER = "cron-job-poe";
 	process.env.MARIA_HOST = "localhost";
 	process.env.MARIA_PASSWORD = "penis123";
-	process.env.MARIA_CONNECTION_LIMIT = 5;
+	process.env.MARIA_CONNECTION_LIMIT = 50;
 
 	const { CronJob } = require("cron");
 
@@ -42,7 +42,7 @@
 			);
 
 			if (sb.Exile.fetchCurrency) {
-				const { statusCode, body: data } = await sb.Got({
+				const { body: data } = await sb.Got({
 					responseType: "json",
 					url: "https://poe.ninja/api/data/currencyoverview",
 					searchParams: new sb.URLParams()
