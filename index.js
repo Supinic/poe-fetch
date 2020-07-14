@@ -30,7 +30,7 @@
 		priceBatch: await sb.Query.getBatch("poe", "Price", ["Item", "League", "Chaos_Equivalent"]),
 	};
 
-	sb.Exile.job = new CronJob("0 0 * * * *", async function pathOfExileCron () {
+	sb.Exile.job = new CronJob("0 0 3 * * *", async function pathOfExileCron () {
 		const prices = [];
 		for (const league of sb.Exile.leagues) {
 			const leagueID = await sb.Query.getRecordset(rs => rs
